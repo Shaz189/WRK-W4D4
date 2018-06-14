@@ -1,0 +1,34 @@
+<div class="top_of_disp">
+  <h1>Add New Album for <%= @band.name %></h1>
+</div>
+
+
+
+<div class="disp_box">
+  <form action="<%= "/bands/#{@band.id}/albums" %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"> <br>
+    
+    
+    <label for="title">Album Title:
+      <input type="text" name="albums[title]">
+    </label> <br>
+    
+    
+    <label for="year">Release Year
+      <select name="albums[year]">
+        <option value="<%= Date.today.year %>" selected="selected"> <%= Date.today.year %> </option>
+        <% ((1000)...Date.today.year).to_a.reverse.each do |year| %>
+          <option value="<%= year %>"> <%= year %> </option>
+        <% end %>
+      </select>
+    </label> <br>
+    
+    
+    <label for="live"> Is this a Live Album?<br>
+      <input style="display: auto; margin-left: 2%;" type="radio" name="albums[live]" value="true"> Yes <br>
+      <input style="display: auto; margin-left: 2%;" type="radio" name="albums[live]" value="false"> No <br>
+    </label> <br>
+    
+    <input type="submit" name="" value="submit">
+  </form>
+</div>

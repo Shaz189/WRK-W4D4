@@ -1,0 +1,17 @@
+
+
+  <div class="top_of_disp">
+    <h1>All Bands</h1>
+    <a href="new_band_url">Add a New Band</a>
+  </div>
+  
+    <ul class="disp_box">
+      <% @bands.each do |band|%>
+      <li class="disp_list"> 
+        
+        <a href="<%= band_url(band.id) %>"> <%= band.name %> </a>
+      
+      </li>
+      <% end %>
+    </ul>
+    

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SoloMusicApp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="topnav">
+      <a class="active" href="<%= root_url %>">MusicApp</a>
+      <% if logged_in? %>
+        <a href="<%= user_url(current_user.id) %>">account</a>
+        <li>
+          <form action="<%= session_url %>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="submit" value="log out">
+          </form>
+        </li>
+      <% else %>
+        <a href="<%= new_user_url %>">create account</a>
+        <a href="<%= new_session_url %>">log in</a>
+      <% end %>
+    </div>
+
+    <% if flash[:errors] %>
+
+    <ul>
+      <% flash[:errors].each do |error| %>
+      <li>
+        <%= error %>
+      </li>
+      <% end %>
+    <% end %>
+    </ul>
+    <div class="yield_disp">
+      <%= yield %>
+    </div>
+  </body>
+</html>

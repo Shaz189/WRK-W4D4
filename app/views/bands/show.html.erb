@@ -1,0 +1,19 @@
+
+<div class="top_of_disp">
+  <h1> <%= @band.name %> </h1>
+  <a href="<%= edit_band_url(@band.id) %>">Change Band Name</a> <br>
+  <a href="<%= new_band_album_url(@band.id) %>"> Add New Album to Artist</a>
+  <form action="<%= band_url(@band.id) %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Band">
+  </form>
+</div>
+  <ul class="disp_box">
+    <% @band.albums.each do |album| %>
+    <li class="disp_list">
+      <a href="<%= album_url(album.id) %>"> <%= album.title %> </a>
+    </li>
+    <% end %>
+  </ul>
+

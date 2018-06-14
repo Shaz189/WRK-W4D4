@@ -1,0 +1,15 @@
+
+<div class="top_of_disp">
+  <h1> Album: <%= @album.title %> </h1>
+  <a href="#">Add New Songs to This Album</a>
+</div>
+
+<ul class="disp_box">
+  <% @album.tracks.each do |track|%>
+  <li class="disp_list"> 
+    
+    <a href="<%= track_url(track.id) %>"> <%= track.title %> </a>
+  
+  </li>
+  <% end %>
+</ul>
